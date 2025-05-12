@@ -50,4 +50,4 @@ jobs:
             sleep 30
             docker rm -f api-gonzalezdominguez
             docker rmi ${{ secrets.USER_DH }}/${{ env.IMAGE_NAME }}
-            docker run -d -p 80:5000 --name api-gonzalezdominguez ${{secrets.USER_EC2}}/${{env.IMAGE_NAME}}
+            docker run -d -p 80:5000 --name api-gonzalezdominguez ${{secrets.USER_DH}}/${{env.IMAGE_NAME}}
