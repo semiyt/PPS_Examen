@@ -1,4 +1,4 @@
-name: AWS + DockerHub + lint
+name: AWS + DockerHub + Lint
 
 env:
   IMAGE_NAME: api-gonzalezdominguez
