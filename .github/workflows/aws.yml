@@ -22,7 +22,7 @@ jobs:
         with:
           username: ${{ secrets.USER_EC2 }}
           key: ${{ secrets.CLAVE_EC2 }}
-          ip: ${{ secrets.IP_EC2 }}
+          host: ${{ secrets.IP_EC2 }}
           port: 22 # ${{ secrets.PORT }}
           script: |
             docker rm -f api-gonzalezdominguez
