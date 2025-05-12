@@ -20,11 +20,11 @@ jobs:
       - name: multiple command
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.AWS_HOSTNAME }}
-          username: ${{ secrets.AWS_USERNAME }}
-          key: ${{ secrets.AWS_PRIVATEKEY }}
+          username: ${{ secrets.USER_EC2 }}
+          key: ${{ secrets.CLAVE_EC2 }}
+          ip: ${{ secrets.IP_EC2 }}
           port: 22 # ${{ secrets.PORT }}
           script: |
-            docker rm -f web1
+            docker rm -f api-gonzalezdominguez
             docker rmi ${{ env.IMAGE_NAME }}
-            docker run -d -p 80:5000 --name web1 ${{ env.IMAGE_NAME }}
+            docker run -d -p 80:5000 --name api-gonzalezdominguez ${{ env.IMAGE_NAME }}
