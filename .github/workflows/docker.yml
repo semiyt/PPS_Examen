@@ -17,12 +17,12 @@ jobs:
       run: echo "${{ secrets.TOKEN_DH }}" | docker login -u "${{ secrets.USER_DH }}" --password-stdin
 
     - name: Build Docker image
-      run: docker build -t ${{ secrets.USER_DH }}/myapp:latest .
+      run: docker build -t ${{ secrets.USER_DH }}/api-gonzalezdominguez:latest .
 
     - name: Push Docker image
-      run: docker push ${{ secrets.USER_DH }}/myapp:latest
+      run: docker push ${{ secrets.USER_DH }}/api-gonzalezdominguez:latest
 
-    - name: Copy SSH key
+    - name: Copiar la SSH key
       run: |
         echo "${{ secrets.CLAVE_EC2 }}" > clave_ec2.pem
         chmod 600 clave_ec2.pem
@@ -30,7 +30,7 @@ jobs:
     - name: Deploy on EC2 via SSH
       run: |
         ssh -o StrictHostKeyChecking=no -i clave_ec2.pem ${{ secrets.USER_EC2 }}@${{ secrets.IP_EC2 }} << 'EOF'
-          docker pull ${{ secrets.USER_DH }}/myapp:latest
-          docker stop myapp || true && docker rm myapp || true
-          docker run -d --name myapp -p 80:80 ${{ secrets.USER_DH }}/myapp:latest
+          docker pull ${{ secrets.USER_DH }}/api-gonzalezdominguez:latest
+          docker stop api-gonzalezdominguez || true && docker rm api-gonzalezdominguez || true
+          docker run -d --name api-gonzalezdominguez -p 80:80 ${{ secrets.USER_DH }}/api-gonzalezdominguez:latest
         EOF
