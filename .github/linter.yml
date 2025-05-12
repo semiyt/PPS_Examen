@@ -1,4 +1,4 @@
-name: Lint Python
+name: Linting Python
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ main ]
     
-    # se comenta para no interferir en protección de ramas
+    # se comenta para no interferir en protección de ramas 
     # paths:
     #   - '**.py'
 
