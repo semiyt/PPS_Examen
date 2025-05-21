@@ -11,5 +11,5 @@ def on_startup():
 app.include_router( tasks.router )
 @app.get("/version")
 def version():
-    return {"message": "Gonzalez Dominguez, Cristian - v1"}
+    return {"message": "Gonzalez Dominguez, Cristian - v2 Ango"}
 
